@@ -1,0 +1,40 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <a routerLink="/" class="brand">
+      <span class="brand-icon"><img src="/images/favicon.png" alt="Logo" class="size-10" /></span>
+      <span class="brand-text">Soccer Stats</span>
+    </a>
+
+    <div class="nav-links">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      <a routerLink="/players" routerLinkActive="active">Players</a>
+      @if (isAuthenticated()) {
+        <a routerLink="/document" routerLinkActive="active">API Docs</a>
+      }
+    </div>
+
+    <div class="nav-actions">
+      @if (isAuthenticated()) {
+        <button class="icon-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+          </svg>
+        </button>
+
+        <div class="user-menu">
+          <img [src]="'https://ui-avatars.com/api/?name=' + currentUser()?.username + '&background=3b82f6&color=fff'"
+               [alt]="currentUser()?.username"
+               class="user-avatar" />
+          <button (click)="logout()" class="btn-logout">Logout</button>
+        </div>
+      } @else {
+        <a routerLink="/auth/login" class="btn-login">Login</a>
+      }
+    </div>
+  </div>
+</nav>
+
+<router-outlet />
+
+<!-- Toast notifications -->
+<app-toast />

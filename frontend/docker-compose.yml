@@ -1,0 +1,17 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: soccer_stats_frontend
+    ports:
+      - "4000:4000"
+    environment:
+      NODE_ENV: production
+    networks:
+      - soccer_stats_network
+
+networks:
+  soccer_stats_network:
+    external: true
+    name: soccer_stats_network
