@@ -1,0 +1,80 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: soccer_stats_api
+    env_file: []  # No usar .env del proyecto
+    ports:
+      - 3000:3000
+    environment:
+      PORT: 3000
+      NODE_ENV: development
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: emmavd
+      DB_PASSWORD: vangelis_genesis
+      DB_NAME: soccers_stats
+      JWT_SECRET: your_jwt_secret_here
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      CORS_ORIGIN: http://localhost:4000
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - soccer_stats_network
+
+  mysql:
+    image: mysql:8.4.6
+    container_name: soccer_stats_db
+    restart: unless-stopped
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password_here
+      MYSQL_DATABASE: soccers_stats
+      MYSQL_USER: emmavd
+      MYSQL_PASSWORD: vangelis_genesis
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./scripts/dump-data/fifa_male_players.sql:/docker-entrypoint-initdb.d/01-male-players.sql:ro
+      - ./scripts/dump-data/fifa_female_players.sql:/docker-entrypoint-initdb.d/02-female-players.sql:ro
+      # El seed del jugador personalizado se ejecuta manualmente con: ./scripts/seedCustomPlayer.sh
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot_password_here"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - soccer_stats_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: soccer_stats_redis
+    restart: unless-stopped
+    ports:
+      - 6380:6379
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - soccer_stats_network
+
+volumes:
+  mysql_data:
+    name: soccer_stats_mysql_data
+  redis_data:
+    name: soccer_stats_redis_data
+
+networks:
+  soccer_stats_network:
+    name: soccer_stats_network
+    driver: bridge
