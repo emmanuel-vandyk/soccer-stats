@@ -6,7 +6,7 @@
 [![Bun](https://img.shields.io/badge/Bun-1.0-000000?style=for-the-badge&logo=bun&logoColor=white)](https://bun.sh/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-![Soccer Stats Logo](./public/soccer-stats-logo.png)
+![Soccer Stats Logo](./frontend/public/soccer-stats-logo.png)
 
 **Aplicación web moderna para visualizar y gestionar estadísticas de jugadores de fútbol.**
 
