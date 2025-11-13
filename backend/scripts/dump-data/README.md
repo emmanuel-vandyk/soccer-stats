@@ -2,15 +2,43 @@
 
 Este directorio contiene los archivos SQL para inicializar la base de datos.
 
+## 📦 Descarga de Archivos Grandes
+
+Debido a las limitaciones de tamaño de GitHub, los archivos de dump completos están alojados externamente:
+
+**[📥 Descargar Archivos de Dump](https://drive.google.com/drive/folders/1BC1jlrvWbwZcXTbhelWhXF9UI7bpjCQa?usp=sharing)**
+
+Archivos necesarios (colocar en este directorio):
+- `01-fifa_male_players.sql` (52 MB) - Jugadores masculinos de FIFA
+- `02-fifa_female_players.sql` (54 MB) - Jugadoras femeninas de FIFA
+- `male_players.csv` (86.72 MB) - CSV de jugadores masculinos
+- `female_players.csv` (89.85 MB) - CSV de jugadoras femeninas
+
+### Instalación
+
+1. Descarga los archivos del link de arriba
+2. Colócalos en `backend/scripts/dump-data/`
+3. Ejecuta Docker Compose normalmente
+
+```bash
+docker compose up -d
+```
+
+Los seeds se cargarán automáticamente en el orden correcto.
+
+---
+
 ## Archivos
 
-### 1. `01-fifa_male_players.sql` (53MB)
+### 1. `01-fifa_male_players.sql` (53MB) 🔽
 Contiene todos los jugadores masculinos de FIFA del dump original.
+**Requiere descarga externa** - Ver link arriba.
 
-### 2. `02-fifa_female_players.sql` (55MB)
+### 2. `02-fifa_female_players.sql` (55MB) 🔽
 Contiene todas las jugadoras femeninas de FIFA del dump original.
+**Requiere descarga externa** - Ver link arriba.
 
-### 3. `03-custom-player-seed.sql` ⭐ NUEVO
+### 3. `03-custom-player-seed.sql` ⭐ INCLUIDO
 **Jugador personalizado que se carga automáticamente**
 
 Este archivo contiene un jugador personalizado (Emma Van Dick) que se incluye automáticamente cuando alguien clona y ejecuta la aplicación por primera vez.
@@ -123,6 +151,7 @@ WHERE id = 999999;
 3. **Nacionalidad**: Si quieres otra nacionalidad, asegúrate de que exista en la tabla `Nationality`
 4. **Persistencia**: Los volúmenes de Docker (`mysql_data`) mantienen los datos incluso si apagas los contenedores
 5. **IGNORE**: Todas las inserciones usan `INSERT IGNORE` para que no fallen si ya existen los datos
+6. **Archivos Grandes**: Los archivos SQL y CSV grandes NO están en el repositorio - deben descargarse del link externo
 
 ## 🎯 Ejemplo de Uso en la API
 
@@ -134,3 +163,4 @@ GET http://localhost:3000/api/players/999999
 
 # Por nombre
 GET http://localhost:3000/api/players/search?name=Emma
+```
