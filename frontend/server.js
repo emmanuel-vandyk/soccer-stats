@@ -5,14 +5,14 @@ const server = Bun.serve({
     let filePath = url.pathname === "/" ? "/index.html" : url.pathname;
 
     try {
-      const file = Bun.file(`./public${filePath}`);
+      const file = Bun.file(`./dist/frontend/browser${filePath}`);
       if (await file.exists()) {
         return new Response(file);
       }
     } catch (e) {}
 
     // Fallback to index.html for Angular routing
-    return new Response(Bun.file("./public/index.html"));
+    return new Response(Bun.file("./dist/frontend/browser/index.html"));
   },
 });
 

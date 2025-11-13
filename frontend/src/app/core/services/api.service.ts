@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError, timeout } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../config/environment';
 import { ApiResponse, PaginatedResponse } from '../models';
 
 /**
@@ -14,7 +14,7 @@ import { ApiResponse, PaginatedResponse } from '../models';
 })
 export class ApiService {
   private readonly http = inject(HttpClient);
-  private readonly baseUrl = 'http://localhost:3000/api';
+  private readonly baseUrl = environment.apiUrl || 'http://localhost:3000/api';
   private readonly REQUEST_TIMEOUT = 30000; // 30 segundos (backend optimizado)
 
   /**

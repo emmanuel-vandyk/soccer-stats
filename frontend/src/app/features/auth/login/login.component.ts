@@ -71,23 +71,6 @@ import { AuthService } from '../../../core/services';
             </div>
           </div>
         </div>
-
-          <!-- Test Credentials Info -->
-        <div class="test-credentials">
-          <div class="test-header">
-            <strong>Test Credentials</strong>
-          </div>
-          <div class="test-users">
-            <div class="test-user">
-              <span class="test-label">Email:</span>
-              <code>test@<!-- -->example.com</code>
-            </div>
-            <div class="test-user">
-              <span class="test-label">Password:</span>
-              <code>Test123456</code>
-            </div>
-          </div>
-        </div>
         </form>
 
         <div class="auth-footer">

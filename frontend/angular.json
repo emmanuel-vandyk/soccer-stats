@@ -50,6 +50,28 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "localhost": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/config/environment.ts",
+                  "with": "src/config/environment.localhost.ts"
+                }
+              ]
+            },
+            "docker": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/config/environment.ts",
+                  "with": "src/config/environment.docker.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -62,6 +84,12 @@
             },
             "development": {
               "buildTarget": "frontend:build:development"
+            },
+            "localhost": {
+              "buildTarget": "frontend:build:localhost"
+            },
+            "docker": {
+              "buildTarget": "frontend:build:docker"
             }
           },
           "defaultConfiguration": "development"

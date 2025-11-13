@@ -2,13 +2,16 @@
   "name": "frontend",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "start:local": "ng serve --configuration=localhost",
+    "build": "ng build --configuration=production",
+    "build:docker": "ng build --configuration=docker",
+    "build:local": "ng build --configuration=localhost",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr": "node dist/frontend/server/server.mjs",
-    "serve:ssr:bun": "bun dist/frontend/server/server.mjs"
+    "serve:ssr:bun": "bun run server.js",
+    "docker": "bun run build:docker && bun run serve:ssr:bun"
   },
   "prettier": {
     "printWidth": 100,
