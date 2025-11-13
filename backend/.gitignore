@@ -40,3 +40,4 @@ redis_data/
 # Dump data files (large datasets)
 backend/scripts/dump-data/*.csv
 backend/scripts/dump-data/*.sql
+.idea/
