@@ -10,7 +10,7 @@
 
 **Aplicación web moderna para visualizar y gestionar estadísticas de jugadores de fútbol.**
 
-[Inicio Rápido](#-inicio-rápido) • [Docker](#-docker) • [Características](#-características) • [API](#-endpoints-del-backend)
+[Inicio Rápido](#-inicio-rápido) • [Docker](#-docker) • [Características](#-características) • [API](#-endpoints-del-backend) • [DEMO](#-video-demostracion)
 
 </div>
 
@@ -22,7 +22,7 @@
 
 - Node.js 20.x o superior
 - Bun (recomendado) o npm
-- Backend corriendo ([Ver repositorio del backend](https://github.com/emmanuel-vandyk/soccer-stats-backend))
+- Backend corriendo ([Ver repositorio del backend](https://github.com/emmanuel-vandyk/soccer-stats/tree/main/backend))
 
 ### ⚙️ Instalación y Ejecución
 
@@ -197,6 +197,10 @@ El backend ya está configurado para aceptar requests de:
 - `GET /api/players/export` - Exportar datos (CSV/Excel)
 
 ---
+
+## 📹 Demo de Soccer Stats
+[👉 CLICK AQUÍ](https://drive.google.com/file/d/1pxpnHEgrewLyktgwBqqLeimVv6TrVnV1/view?usp=drive_link)
+
 
 ## 📄 Licencia
 
