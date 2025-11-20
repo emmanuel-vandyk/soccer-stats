@@ -43,7 +43,7 @@ bun run start   # Backend en Localhost (ng serve puerto 4200)
 
 | Comando | Backend | Backend Puerto | Frontend Puerto | Uso |
 |---------|---------|----------------|-----------------|-----|
-| `bun run docker` | Docker | 3000 | 4200 | Desarrollo local → Backend Docker |
+| `bun run docker` | Docker | 3000 | 4000 | Desarrollo local → Backend Docker |
 | `bun run start` | Localhost | 3000 | 4200 | Desarrollo local → Backend Localhost |
 
 **Acceder a la aplicación:**
